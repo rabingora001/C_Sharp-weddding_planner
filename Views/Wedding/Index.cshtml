@@ -1,0 +1,28 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and Registration page</title>
+</head>
+<body>
+    <div style="float:left">
+        <partial  name="RegistrationForm"></partial>
+    </div>
+    <div style="float:right">
+        <partial  name="LoginForm"></partial>
+    </div>
+
+    <center>
+        @{
+            foreach (var i in @ViewBag.AllUsers)
+            {
+                <p>@i.FirstName | @i.Email | <a href="/delete/@i.UserId"> Delete</a></p>
+            }
+        }
+    </center>
+</body>
+</html>

@@ -1,0 +1,21 @@
+
+<a href="/dashboard">Dashboard</a> | <a href="Logout">Logout</a>
+<hr>
+<h2>@ViewBag.ShowOne.WedderOne and @ViewBag.ShowOne.WedderTwo's Wedding</h2>
+<h3 style="color:grey">Location: @ViewBag.ShowOne.WeddingAddress</h3>
+<h3 style="color:grey"> Date: @ViewBag.ShowOne.Date.ToString("MM dd yyyy")</h3>
+
+<h4 style="color:gray">Guests:</h4>
+@{ 
+    <ul>
+        @foreach (var h in @ViewBag.ShowOne.guest)
+        {
+            <li>@h.User.FirstName @h.User.LastName</li>
+        }
+    </ul>
+}
+
+<div class="map">
+    <iframe width="600" height="450" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/search?q=@ViewBag.ShowOne.WeddingAddress&key=AIzaSyDoztwQzwA4ReH0gj0fBFBmSRp0-AQ-B8E" allowfullscreen></iframe> 
+</div>

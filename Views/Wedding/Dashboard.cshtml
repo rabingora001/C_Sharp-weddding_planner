@@ -1,0 +1,81 @@
+@using WeddingPlanner.Models
+@model List<WeddingSchedule>
+<html>
+    <head>
+        <style>
+            table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+
+            td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            }
+
+            tr:nth-child(even) {
+            background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Welcome <span style="color:red">@ViewBag.firstname @ViewBag.lastname!</span> to the Wedding Planner Dashboard</h3>
+        <a href="/logout">Logout</a> | <a href="/">Home</a>
+        <hr>
+        <a href="/newWeddingPage">New Wedding</a>
+        <hr>
+
+        <table>
+            <tr>
+                <th>Wedding</th>
+                <th>Date</th>
+                <th>Guest</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+            @{
+                foreach (var w in @Model)
+                {
+                <tr>
+                    <td><a href="/weddingDetailPage/@w.WeddingId">@w.WedderOne & @w.WedderTwo</a></td>
+                    <td>@w.Date</td>
+                    <td>@w.guest.Count</td>
+                    <td>@w.WeddingAddress</td>
+                    <td> 
+                        
+                            @{
+                                var count =0;
+                                foreach (var g in @w.guest)
+                                {
+                                    if(@ViewBag.UserId == g.UserId)
+                                    {
+                                        count++;
+                                    }
+                                }
+                            
+                                if(count ==0)
+                                {
+                                    <a class="btn btn-success" href="/rsvp/@w.WeddingId">RSVP</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-danger" href="/rsvp/@w.WeddingId">UNRSVP</a>
+                                }
+                            }
+                            @if(@ViewBag.UserId == @w.UserId)
+                            { 
+                            <a href="/deleteWed/@w.WeddingId"> | Delete | </a>
+                            }
+                        
+                    </td>
+                    </tr>
+                }
+            }
+                
+            </tr>
+        </table>
+
+    </body>
+</html>

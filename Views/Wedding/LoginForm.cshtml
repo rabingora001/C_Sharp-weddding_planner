@@ -1,0 +1,16 @@
+@using WeddingPlanner.Models
+@model LoginUser
+
+<div>
+    <form asp-action="LoginProcess" asp-controller="Wedding" method="post">
+        <h3>Login</h3>
+
+        <span asp-validation-for="LoginEmail" style="color:red"></span><br>
+        <p>Email:<br><input type="text" asp-for="LoginEmail"></p>
+
+        <span asp-validation-for="LoginPassword" style="color:red"></span><br>
+        <p>password:<br><input type="password" asp-for="LoginPassword"></p>
+
+        <button type="submit">Login</button>
+    </form>
+</div>

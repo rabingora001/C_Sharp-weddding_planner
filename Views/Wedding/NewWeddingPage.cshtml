@@ -1,0 +1,25 @@
+@using WeddingPlanner.Models
+@model WeddingSchedule
+
+<h2>Plan your Wedding<span style="color:red"> @ViewBag.firstname @ViewBag.lastname !</h2>
+<a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a>
+<hr>
+<div>
+    <form asp-action="CreateWeddingProcessMethod" asp-controller="Wedding" method="post">
+
+        <span asp-validation-for="WedderOne" style="color:red"></span><br>
+        <P>Wedder One: <input type="text"asp-for="WedderOne" ></P>
+
+        <span asp-validation-for="WedderTwo" style="color:red"></span><br>
+        <P>Wedder Two: <input type="text" asp-for="WedderTwo"></P>
+
+        <span asp-validation-for="Date" style="color:red"></span><br>
+        <P>Date: <input type="Date" asp-for="Date"></P>
+
+        <span asp-validation-for="WeddingAddress" style="color:red"></span><br>
+        <P>Wedding Address: <input type="text" asp-for="WeddingAddress"></P>
+
+        <button type="submit">Create</button>
+    </form>
+</div>
+

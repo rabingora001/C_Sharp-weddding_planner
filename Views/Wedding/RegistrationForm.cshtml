@@ -1,0 +1,24 @@
+@using WeddingPlanner.Models
+@model User
+<div>
+    <form asp-action="RegistrationProcess" asp-controller="Wedding" method="post">
+        <h3>Register</h3>
+
+        <span asp-validation-for="FirstName" style="color:red"></span>
+        <p>First Name:<br><input type="text" asp-for="FirstName"></p>
+
+        <span asp-validation-for="LastName" style="color:red"></span>
+        <p>Last Name:<br><input type="text" asp-for="LastName"></p>
+
+        <span asp-validation-for="Email" style="color:red"></span>
+        <p>Email:<br><input type="text" asp-for="Email"></p>
+
+        <span asp-validation-for="Password" style="color:red"></span>
+        <p>Password:<br><input type="password" asp-for="Password"></p>
+
+        <span asp-validation-for="ConfirmPassword" style="color:red"></span>
+        <p>Password:<br><input type="password" asp-for="ConfirmPassword"></p>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
